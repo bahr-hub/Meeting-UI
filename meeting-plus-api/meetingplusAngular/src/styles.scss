@@ -1,0 +1,152 @@
+@import "src/assets/styles/colors";
+@import "src/assets/styles/inputs";
+@import "src/assets/styles/buttons";
+@import "src/assets/styles/widgets";
+@import "src/assets/styles/layout";
+@import "src/assets/styles/meetingButtons";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import '~ngx-toastr/toastr';
+@import "~quill/dist/quill.snow.css";
+@import "~quill/dist/quill.bubble.css";
+@import "~quill/dist/quill.core.css";
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-layouts/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-grids/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-treegrid/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-gantt/styles/material.css';
+
+
+
+@font-face
+{
+  font-family: "geest";
+  src: url("./assets/fonts/GESSTwoLight-Light.ttf");
+}
+@font-face
+{
+  font-family: "codropsicons";
+  src: url("./assets/fonts/codropsicons.ttf");
+}
+@font-face
+{
+  font-family: "NeoSansArabic";
+  src: url("./assets/fonts/neo-sans-arabic-regular.ttf");
+}
+@font-face
+{
+  font-family: "icomoon";
+  src: url("./assets/fonts/icomoon.ttf");
+}
+*{
+    box-sizing: border-box;
+    transition: 0.3s ease-in-out;
+    font-family: Arial;
+    line-height: 1.7;
+}
+body,html
+{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #f0f1f2 !important;
+}
+
+.btn-new-record{
+    margin-left: 1%;
+    background-color: #2dabe2 !important;
+    font-weight: bold;
+}
+
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    margin: 0px;
+    border: 3px solid #50aef1;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #50aef1 transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .ng-select-container
+  {
+      border:none !important;
+      border-radius: 0px !important;
+      border-bottom: 2px #39a4d0 solid !important;
+      background-color: transparent !important;
+  }
+  .ng-value
+  {
+    padding: 5px 10px !important;
+    margin:7px 10px !important;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2) !important;
+    background-color: #fff !important;
+  }
+  .fc-event-container
+  {
+    cursor: pointer;
+  }
+  
+  .disabled-email{
+    top:-16px !important;
+    color: #2196f3 !important;
+  }
+
+  .user-select{
+    color: #2196f3;
+  }
+
+  .date-icon-left{
+     background-position-x:left !important
+  }
+
+  .date-icon-right{
+    background-position-x:right !important
+ }
+
+ button[disabled=disabled], button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(229, 229, 229) !important;
+}
+
+.form-group label{
+  top: -16px !important;
+}

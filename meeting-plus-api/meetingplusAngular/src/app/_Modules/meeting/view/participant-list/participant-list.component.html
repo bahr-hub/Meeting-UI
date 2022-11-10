@@ -1,0 +1,27 @@
+<app-participant-item *ngFor="let participant of _participants" [creator]="participant.participant.id == _creatorId" [participant]="participant"></app-participant-item>
+<div class="participant-form" *ngIf="formOpened">
+  <form [formGroup]="participantForm" (ngSubmit)="addParticipant()">
+    <div class="form-group">
+      <p [ngStyle] ="{'text-align' : translate.currentLang === 'ar' ? 'right' : 'left'}">{{'meeting.create_meeting.participants' | translate}}</p>
+      <ng-select [items]="participants" bindLabel="name" placeholder="{{'meeting.create_meeting.choose_participant' | translate}}" multiple="true" [closeOnSelect]="false"
+        formControlName="participantId">
+      </ng-select>
+      <p class="error" *ngIf="participantId.invalid && (participantId.touched || participantId.dirty)" [ngStyle] ="{'text-align' : translate.currentLang === 'ar' ? 'right' : 'left'}">
+        <span *ngIf="participantId.errors.required" translate>This field is required</span>
+      </p>
+    </div>
+    <div [ngClass] ="{'form-options': true, 'ardiv': translate.currentLang === 'ar', 'endiv': translate.currentLang !== 'ar'}">
+      <button class="save-btn">
+        <img src="/../../../../../assets/images/save.svg">
+        <span> {{'meeting.meeting_list.save_existing' | translate}}</span>
+      </button>
+      <button type="reset" class="reset-participant participant-form-btn">
+        <img src="/../../../../../assets/images/error.svg">
+        <span translate>Cancel</span>
+      </button>
+    </div>
+  </form>
+</div>
+<itz-success-btn (clicked)="formOpened = true" *ngIf = "_meeting.started && _meeting.notEnded">
+  {{'meeting.create_meeting.add_participant' | translate}}
+</itz-success-btn>

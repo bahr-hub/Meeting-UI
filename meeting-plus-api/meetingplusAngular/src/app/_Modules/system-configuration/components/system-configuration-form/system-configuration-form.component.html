@@ -1,0 +1,107 @@
+<div class="mainContent component-content" mpRtl>
+    <h2 translate class="arlabel">setting.setting</h2>
+    <form #systemConfigurationForm="ngForm" (ngSubmit)="systemConfigurationForm.form.valid && save(systemConfigurationForm)">
+
+        <div class="row">
+            <div class="col-lg-6" style="margin-top: 20px;">
+                <label translate class="arlabel">setting.authentication_mode</label>
+                <div class="funkyradio" style="margin-top: -30px;direction:rtl;">
+                    <div class="funkyradio-primary">
+                        <input type="radio" [(ngModel)]="systemConfigurationModel.authenticationMode" id="activeDirectory" name="authenticationMode"
+                            [value]="1" [checked]="systemConfigurationModel.authenticationMode==1" />
+                        <label for="activeDirectory" translate class="arlabel">setting.active_directory</label>
+
+                    </div>
+                    <div class="funkyradio-success" style="direction:rtl;">
+                        <input type="radio" [(ngModel)]="systemConfigurationModel.authenticationMode" id="normalUser" name="authenticationMode" [value]="0"
+                            [checked]="systemConfigurationModel.authenticationMode==0" />
+                        <label for="normalUser" translate class="arlabel">setting.normal_login</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" *ngIf="false">
+              <div class="form-group">
+                <label translate class="arlabel lbl">setting.max_meeting_time</label>
+                <input id="maxMeetingTime" [(ngModel)]="systemConfigurationModel.maxMeetingTime" name="maxMeetingTime" type="number" #maxMeetingTime="ngModel" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group long-input">
+                    <p translate class="arlabel">setting.timezone</p>
+                    <select [(ngModel)]="systemConfigurationModel.timeZone" id="timeZone" name="timeZone" #timeZone="ngModel">
+                        <option *ngFor="let timeZone of timeZones" value="{{timeZone}}">
+                            {{timeZone}}
+                        </option>
+                    </select>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-lg-4" *ngIf="false">
+                <div class="form-group long-input">
+                    <p translate class="arlabel">setting.start_working_day</p>
+                    <select [(ngModel)]="systemConfigurationModel.startOfWorkDays" id="startOfWorkDays" name="startOfWorkDays" #startOfWorkDays="ngModel">
+                        <option *ngFor="let day of weekDays" value="{{day.key}}" translate>
+                            {{day.value}}
+                        </option>
+                    </select>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+            <div class="col-lg-4" *ngIf="false">
+                <div class="form-group long-input">
+                    <p translate class="arlabel">setting.end_working_day</p>
+                    <select [(ngModel)]="systemConfigurationModel.endOfWorkDays" id="endOfWorkDays" name="endOfWorkDays" #endOfWorkDays="ngModel">
+                        <option *ngFor="let day of weekDays" value="{{day.key}}" translate>
+                            {{day.value}}
+                        </option>
+                    </select>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <div class="d-flex field-group">
+                    <div class="inputs-group col-lg-6 col-md-12 col-sm-12">
+                        <div class="switch">
+                            <div class="w-100 custom-control custom-switch">
+                                <input [(ngModel)]="systemConfigurationModel.integrationWithGoogleCalendar" type="checkbox" class="custom-control-input"
+                                    id="customSwitch1" name="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1"></label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="inputs-group col-lg-6 col-md-12 col-sm-12">
+                <h3 translate>setting.integration_with_google_calendar</h3>
+            </div>
+            <!-- <div class="col-md-11">
+                <div class="row mt-3">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="googleCalendar">
+                            <img src="./assets/images/GoogleCalendar.svg" alt="">
+                            <h3 translate>setting.integration_with_google_calendar</h3> 
+                             <p>You need to give access to MeetingPlus to make Google Calenar appears here.</p>
+                            <a href="#" class="button main">Give Access</a> 
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="button-container" style="display: flex;">
+            <button type="submit " class="btn btn-primary save-button" translate>Save</button>
+        </div>
+    </form>
+
+
+</div>

@@ -1,0 +1,29 @@
+<div class="timer">
+    <span translate> meeting.meeting_list.starts_in</span>
+    <div class="time-entites">
+        <div class="time-entity" >
+            <div class="time-holder" >
+                {{displayTime[0] || 0}}
+            </div>
+            <span class="time-unit" translate>meeting.meeting_list.days</span>
+        </div>
+        <div class="time-entity">
+            <div  class="time-holder">
+                {{displayTime[1] || 0}}
+            </div>
+            <span class="time-unit" translate>meeting.meeting_list.hours</span>
+        </div>
+        <div class="time-entity" >
+            <div class="time-holder " >
+                {{displayTime[2] || 0}}
+            </div>
+            <span class="time-unit" translate>meeting.meeting_list.minutes</span>
+        </div>
+        <div class="time-entity" >
+            <div class="time-holder">
+                {{displayTime[3] || 0}}
+            </div>
+            <span class="time-unit" translate>meeting.meeting_list.seconds</span>
+        </div>
+    </div>
+</div>

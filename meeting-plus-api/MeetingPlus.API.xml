@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MeetingPlus.API</name>
+    </assembly>
+    <members>
+        <member name="M:WebApp.Controllers.LocationController.DeleteLocation(System.Int32)">
+            <summary>
+            Deletes individual item by id.
+            </summary>
+            <param name="id">ID Value of the item</param>
+        </member>
+    </members>
+</doc>

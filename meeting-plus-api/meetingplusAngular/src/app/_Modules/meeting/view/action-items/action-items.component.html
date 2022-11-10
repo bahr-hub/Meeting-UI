@@ -1,0 +1,14 @@
+<div class="action-item">
+    <div class="action-name">
+            <itz-checkbox (_checked) ="closeTask(actionItem.id)"  [checked]="actionItem.status" [disabled] = "actionItem.status"></itz-checkbox>
+        <span> {{actionItem.name}}</span>
+    </div>
+    <div class="assigne">
+        {{actionItem.assigne}}
+    </div>
+
+    <div class="date">
+        <span class="due">{{'meeting.meeting_list.due_date' | translate}}</span>
+    <span class="day">{{actionItem.dueDate}}</span>
+    </div>
+</div>

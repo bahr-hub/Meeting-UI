@@ -1,0 +1,36 @@
+<div class="meeting-card" *ngIf="meeting">
+    <div class="meeting-details">
+        <div class="name-date botom-bordered">
+            <a [routerLink]="['/Meetings/view',meeting.id]" routerLinkActive="router-link-active" class="name">{{meeting.name}}</a>
+            <span class="date">{{'meeting.meeting_list.date' | translate }}: {{meeting.from | date:'dd MMM yyyy':undefined:this.translate.currentLang}} | {{'meeting.meeting_list.time'
+                | translate }}: {{meeting.from | date:'shortTime':undefined:this.translate.currentLang}} </span>
+        </div>
+        <div class="agenda botom-bordered">
+            <a (click)="toggleTopics()">
+                <img src="../../../../../assets/images/plus.svg"> {{'meeting.meeting_list.agenda' | translate }}
+            </a>
+            <div class="topics" [ngClass]="{'opened':isTopicsToggled,'closed':!isTopicsToggled}">
+                <ul class="topics-list">
+                    <li *ngFor="let topic of meeting.meetingTopic">{{topic.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="participants">
+            <div class="participant" *ngFor="let item of meeting.meetingParticipant">
+                {{item.participant.name}}
+            </div>
+        </div>
+    </div>
+
+    <div class="meeting-options">
+        <app-meeting-functions [meeting]="meeting" [meetingType]="meetingType" [isViewPage]="false"></app-meeting-functions>
+        <div class="timer" *ngIf="meetingType == 0">
+            <app-timer *ngIf="!meeting.started" [End]="meeting.from"></app-timer>
+            <app-timer *ngIf="meeting.started" [Start]="meeting.startedAt"></app-timer>
+        </div>
+
+        <div class="timer" *ngIf="meetingType == 1">
+            <app-timer (zeroTrigger)="onZeroTrigger($event,meeting)" [End]="meeting.from"></app-timer>
+        </div>
+    </div>
+</div>

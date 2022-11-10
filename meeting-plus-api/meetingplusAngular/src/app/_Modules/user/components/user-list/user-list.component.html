@@ -1,0 +1,13 @@
+
+ 
+<div class="main-content">
+    <div class="lookup-header">
+        <h4>{{'users.users' | translate}}</h4>
+        <itz-success-btn    *ngIf="ability.can('create','user')" (clicked)= "add()">{{'users.add' | translate}}</itz-success-btn>
+        
+    </div>
+    <app-data-list [properties]="properties" [list]="userList" (deleteRow)="delete($event)"(changeStatus)="changeStatus($event)" (editRow)="edit($event)"
+    (changePagination)="onChangePagination($event)" [total]="total" [pageName]="'user'">
+    </app-data-list>
+
+</div>

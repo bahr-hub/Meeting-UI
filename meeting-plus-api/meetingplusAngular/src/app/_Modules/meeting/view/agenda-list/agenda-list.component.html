@@ -1,0 +1,43 @@
+<div class="aggenda-list">
+  <app-agenda-item [startAt]="_startAt" [topic]="agenda" *ngFor="let agenda of _agendaItems"></app-agenda-item>
+  <div class="add-agenda-item-form" *ngIf="toggledForm">
+    <form [formGroup]="topicForm" (ngSubmit)="addTopic()">
+      <div class="form-group long-input">
+        <label class="arlabel">{{'meeting.create_meeting.topic_name' | translate}}</label>
+        <input formControlName="topicName" autofocus type="text" required="required" />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="form-group short-input">
+        <label class="arlabel">{{'meeting.create_meeting.presenter' | translate}}</label>
+        <select formControlName="presenter" autofocus required="required">
+          <option></option>
+          <option *ngFor="let presenter of _participants" [value]="presenter.participantId">
+            {{presenter.participant.name}}
+          </option>
+        </select>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="form-group short-input">
+        <label class="arlabel">{{'meeting.create_meeting.duration' | translate}}</label>
+        <input formControlName="duration" autofocus type="number" min="1" required="required" />
+        <span class="highlight"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="break"></div>
+      <div [ngClass] ="{'form-options' : true , 'ardiv' : translate.currentLang === 'ar', 'endiv' : translate.currentLang !== 'ar'}">
+        <button type="submit" class="save-btn" [disabled]="disableAddTopic">
+          <img src="/../../../../../assets/images/save.svg"> {{'meeting.meeting_list.save_existing' | translate}}
+        </button>
+        <button type="reset" class="reset-participant participant-form-btn">
+          <img src="/../../../../../assets/images/error.svg">
+          <span translate>Cancel</span>
+        </button>
+      </div>
+    </form>
+  </div>
+  <itz-success-btn (clicked)="toggleTopicForm()">
+    {{'meeting.create_meeting.add_topic' | translate}}
+  </itz-success-btn>
+</div>

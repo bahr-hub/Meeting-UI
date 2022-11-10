@@ -1,0 +1,34 @@
+<div class="meeting-holder" *ngIf="currentMeeting">
+  <app-meeting-head [meeting]="currentMeeting" class="widget"></app-meeting-head>
+
+  <div class="widget-holder" style="margin-top: 20px;">
+    <itz-title translate>Notes</itz-title>
+  </div>
+  <div class="widget-holder notes" style="height: 240px;background-color: white;">
+    <div style="height: 200px;">
+      <quill-editor [(ngModel)]="currentMeeting.notes" (onContentChanged)="addNote()" [placeholder]="'meeting.view_meeting.insert_text_here' | translate"
+                    [ngClass]="{'aralign' :  translate.currentLang === 'ar' , 'enalign' :  translate.currentLang !== 'ar'}">
+      </quill-editor>
+      <!-- <button (click)="addNote()">Save</button> -->
+    </div>
+    <!-- (onContentChanged)="addNote()" -->
+  </div>
+
+  <div class="meeting-widgets">
+    <div class="widget-holder large">
+      <itz-title>{{'meeting.meeting_list.todos' | translate}}</itz-title>
+      <app-action-items-list [startAt]="currentMeeting.startedAt" [actionItems]="currentMeeting.meetingTask" [participants]="currentMeeting.meetingParticipant"
+        class="widget"></app-action-items-list>
+    </div>
+    <div class="widget-holder large">
+      <itz-title>{{'meeting.view_meeting.meeting_agenda' | translate}}</itz-title>
+      <app-agenda-list [agendaItems]="currentMeeting.meetingTopic" [startAt]="currentMeeting.startedAt" [participants]="currentMeeting.meetingParticipant"
+        class="widget"></app-agenda-list>
+    </div>
+    <div class="widget-holder small">
+      <itz-title>{{'meeting.create_meeting.participants' | translate}}</itz-title>
+      <app-participant-list [participants]="currentMeeting.meetingParticipant" [creatorId]="currentMeeting.createdBy" class="widget"
+        [meeting]="currentMeeting"></app-participant-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="main-content">
+    <div class="lookup-header">
+        <h4>{{'projects.projects' | translate}}</h4>
+        <itz-success-btn  *ngIf="ability.can('create','project')" (clicked)= "openModal()">{{'projects.add' | translate}}</itz-success-btn>
+    </div>
+    <app-data-list [properties]="properties" [list]="projectList" (deleteRow)="delete($event)" (editRow)="openModal($event)"
+    (changePagination)="onChangePagination($event)" [total]="total" [pageName]="'project'">
+    </app-data-list>
+    <app-project-form (saveRow)="save($event)"></app-project-form>
+</div>

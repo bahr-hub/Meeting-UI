@@ -1,0 +1,45 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+            <span *ngIf="model.id && model.id>0" translate>Update</span>
+            <span *ngIf="!model.id || model.id==0" translate>Add</span>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form class="form-auth-small" #form="ngForm" (ngSubmit)="save(form)">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input [class.is-invalid]="form.submitted && name.invalid" id="name" name="name" [(ngModel)]="model.name" #name="ngModel"
+                            type="text" required="required" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label [class.is-invalid-label]="form.submitted && name.invalid" translate>{{'tags.name' | translate}}</label>
+                        <div class="invalid-feedback" *ngIf="form.submitted && name.invalid">
+                            <p *ngIf="name.errors.required" translate>This field is required</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input [class.is-invalid]="form.submitted && description.invalid" id="description" name="description" [(ngModel)]="model.description"
+                            #description="ngModel" type="text" required="required" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label [class.is-invalid-label]="form.submitted && description.invalid" translate>{{'tags.desc' | translate}}</label>
+                        <div class="invalid-feedback" *ngIf="form.submitted && description.invalid">
+                            <p *ngIf="description.errors.required" translate>This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info" translate>Save</button>
+            <button type="button" class="btn btn-default" (click)="modal.dismiss()" translate>Cancel</button>
+        </div>
+    </form>
+</ng-template>

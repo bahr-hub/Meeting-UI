@@ -1,0 +1,16 @@
+
+<div class="main-container" [ngClass]="{'menu-opened': opened}">
+  <header>
+    <app-header></app-header>
+  </header>
+  <aside>
+    <app-side-bar (expanded)="handelExpantion()"></app-side-bar>
+  </aside>
+  <main>
+    <div id="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-loader></app-loader>
+  </main>
+</div>
+

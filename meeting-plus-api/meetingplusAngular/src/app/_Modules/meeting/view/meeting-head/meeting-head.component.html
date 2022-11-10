@@ -1,0 +1,26 @@
+<div class="meeting-head-container">
+  <div class="meeting-details">
+    <div class="meeting-name">
+      <h4>{{ _meeting.name }}&nbsp;</h4>
+    </div>
+    <div class="date-time">
+      <span class="date"> &nbsp;{{'meeting.meeting_list.date' | translate }}: {{startDate}} </span>
+      <span class="date">&nbsp;|&nbsp;</span>
+      <span class="time">&nbsp;{{'meeting.meeting_list.time' | translate }}: {{startTime}}</span>
+    </div>
+  
+
+  </div>
+
+  <div class="options-timer">
+    <div class="meeting-options">
+      <app-meeting-functions [meeting]="_meeting" [meetingType]="meetingType()"></app-meeting-functions>
+    </div>
+
+
+    <app-timer *ngIf="meetingType() == 0 && !_meeting.started && !isMeetingPrevious()" [End]="_meeting.from"></app-timer>
+    <app-timer *ngIf="meetingType() == 0 && _meeting.started && !isMeetingPrevious()" [Start]="_meeting.startedAt"></app-timer>
+    <app-timer *ngIf="meetingType() == 1 && !isMeetingPrevious()" (zeroTrigger)="onZeroTrigger($event,_meeting)" [End]="_meeting.from"></app-timer>
+  </div>
+
+</div>

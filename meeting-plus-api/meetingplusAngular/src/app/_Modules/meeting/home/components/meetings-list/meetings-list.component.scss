@@ -1,0 +1,21 @@
+
+.create-meeting-container
+{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    .create-meeting-btn
+    {
+        border: none;
+        outline: none;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        background-color: #2dabe2;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px;
+    }
+}
+:host
+{margin-bottom: 20px;}

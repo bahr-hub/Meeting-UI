@@ -1,0 +1,19 @@
+.checkbox-container
+{
+
+    background-color: transparent;
+    border: solid 1px #39a4d0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.checked
+{
+    background-color: #39a4d0;
+    padding: 3px;
+    background-image: url("/../../../assets/images/correct2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}

@@ -1,0 +1,22 @@
+<div class="content-container  calender-container">
+  <div class="widget">
+    <div *ngIf = "!loading">
+      <full-calendar
+       #calender
+       [plugins]="calendarPlugins"
+       [events]="meetings"
+       [header]="header"
+       [locales]="this.calendarLocales"
+       [locale]="this.translate.currentLang"
+       (datesRender)="dateChanged($event.view)"
+       (eventClick)="openMeeting($event)">
+      </full-calendar>
+    </div>  
+    <div class="lds-ring" *ngIf="loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+  </div>
+  </div>

@@ -1,0 +1,125 @@
+.todo-item
+{
+  
+
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    .meeting-details
+    {
+        font-family: 'NeoSansArabic';
+        display: flex;
+        justify-content: space-between;
+
+
+
+        .meeting-name
+        {
+            display: flex;
+            align-items: center;
+            .opened
+            {
+                
+                transform: rotate(0deg) !important;
+              
+            }
+            .plus-icon
+            {
+                height: 18px;
+                width: 18px;
+                margin-inline-end: 10px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                .rod
+                {
+                    height: 3px;
+                    width: 100%;
+                    background-color: #39a4d0;
+                    position: absolute;
+
+                }
+                .rod2
+                {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .name
+            {
+                font-size: 24px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.33;
+                letter-spacing: normal;
+                text-align: left;
+                color: #502274;
+            }
+        }
+
+        .date-time
+        {
+            .date,.time
+            {
+                font-family: "NeoSansArabic";
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.36;
+                letter-spacing: normal;
+                text-align: left;
+                color: #646464;
+                margin-inline-end: 10px;
+            }
+        }
+    }
+
+    .tasks
+    {
+        margin-top:35px;
+        display: flex;
+        flex-direction: column;
+        .task-item
+        {
+            margin-bottom: 18px;
+            padding: 15px 10px;
+            border: solid 1px rgba(46, 23, 96, 0.14);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .task-name
+            {
+                display: flex;
+                align-items: center;
+
+                .name
+                {
+                    font-family: "NeoSansArabic";
+                    font-size: 18px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.33;
+                    letter-spacing: normal;
+                    color: #2e1760;
+                    margin: 0px 10px;
+                }
+            }
+            .due-date
+            {
+                font-family: "NeoSansArabic";
+                font-size: 12px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.33;
+                letter-spacing: normal;
+                color: #979797;
+            }
+        }
+    }
+
+}

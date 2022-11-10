@@ -1,0 +1,11 @@
+ 
+<div class="main-content">
+    <div class="lookup-header">
+        <h4>{{'tags.tags' | translate}}</h4>
+        <itz-success-btn  *ngIf="ability.can('create','tag')" (clicked)= "openModal()">{{'tags.add' | translate}}</itz-success-btn>
+    </div>
+    <app-data-list [properties]="properties" [list]="tagList" (deleteRow)="delete($event)" (editRow)="openModal($event)"
+    (changePagination)="onChangePagination($event)" [total]="total" [pageName]="'tag'">
+    </app-data-list>
+    <app-tag-form (saveRow)="save($event)"></app-tag-form>
+</div>

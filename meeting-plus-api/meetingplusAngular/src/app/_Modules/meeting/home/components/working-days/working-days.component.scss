@@ -1,0 +1,54 @@
+.working-week
+{
+    display: flex;
+    justify-content: center;
+    background-color: #3423a6;
+    .working-day
+    {
+        padding: 15px 30px !important;
+        margin: 0px 5px;
+        text-align: center;
+        color:#fff;
+        position: relative;
+    }
+    .utility
+    {
+        padding:15px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        background-origin: content-box;
+        background-color: rgba(46, 23, 96, 0.2);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        &:hover
+        {
+            background-color: rgba(46, 23, 96, 0.5);
+        }
+    }
+    .calender
+    {
+        background-image: url("../../../../../../assets/images/cal.svg");
+    }
+    .speedo
+    {
+        background-image: url("../../../../../../assets/images/speedometer.svg");
+
+    }
+    .icon
+    {
+        min-width: 50px;
+    }
+
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #a51010;
+    border-radius: 50%;
+    top:5px;
+    right: 5px;
+    position: absolute;
+  }
+  
+}

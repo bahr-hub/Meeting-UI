@@ -1,0 +1,17 @@
+<div class="agenda-item" [ngClass]="{'agenda-item-done':_topic.isClosed}">
+  <div class="name-state">
+    <div class="state" [ngClass]="{'state-done':_topic.isClosed}"></div>
+    <span class="name">{{_topic.name}}</span>
+  </div>
+  <div class="assignee">
+    {{_topic.presenter ? _topic.presenter.name : _topic.presenterName}}
+  </div>
+  <div class="time">
+    {{_topic.duration + ' '}} {{'meeting.create_meeting.minutes' | translate}}
+  </div>
+  <div class="options">
+    <button (click)="closeTopic(_topic.id)" class="meeting-option-btn"  [disabled] = "_topic.isClosed"
+      [ngClass]="{'done':!_topic.isClosed,'return':_topic.isClosed}"></button>
+     <!-- <button class="delete meeting-option-btn" (click)="deleteTopic(_topic.id)"></button>  -->
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="working-week">
+    <a class="utility icon speedo "></a>
+    <div *ngFor="let day of week" class="working-day utility" [class.active-tab]="day.isActive" (click)="onSelecteDay(day)">
+        <span translate>{{day.dayName}}
+            <span *ngIf="day.isActive" class="dot"></span>
+        </span>
+    </div>
+    <a class="utility icon calender"></a>
+</div>

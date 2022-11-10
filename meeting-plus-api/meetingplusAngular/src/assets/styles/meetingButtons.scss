@@ -1,0 +1,60 @@
+.meeting-btn
+{
+    
+    background-color: transparent;
+    border:1px solid transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    outline: none;
+    color:#606060;
+    font-size: 14px;
+    line-height: 1.14;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 36px;
+    padding: 5px;
+    img
+    {
+        margin-inline-end: 5px;
+    }
+}
+.edit-btn
+{
+    border-color: #ffbb00;
+}
+.meeting-icon
+{
+    width: 22.3px;
+    height: 20.8px;
+}
+.link
+{
+
+    background-image: url('/assets/images/link.svg');
+}
+.end
+{
+    background-image: url('/assets/images/pause.png');
+}
+.start
+{
+    background-image: url('/assets/images/start.png');
+}
+
+.join
+{
+    background-image: url('/assets/images/join.png');
+}
+.accept-btn
+{
+    border-color:#74a500;
+}
+.cancle-btn
+{
+    border-color: #cf0606;
+}
+.fullscreen
+{
+    background-image: url('/assets/images/full-screen.svg');
+}

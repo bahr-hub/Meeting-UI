@@ -1,0 +1,96 @@
+.agenda-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+
+  .name-state {
+    font-size: 14px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-family: "NeoSansArabic";
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    color: #2e1760;
+    .state {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #606060;
+      margin-inline-end: 5px;
+    }
+
+    .state-done {
+      background-color: #a5eb00;
+    }
+
+  }
+
+  .assignee,
+  .time {
+    flex: 1;
+    font-family: "NeoSansArabic";
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #646464;
+  }
+
+  .options {
+
+
+    .meeting-option-btn {
+      background-color: transparent;
+      border: none;
+      width: 20px;
+      height: 20px;
+      margin: 5px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-origin: content-box;
+      padding: 0px;
+    }
+
+    .delete {
+      background-image: url("../../../../../assets/images/delete.png");
+    }
+
+    .return {
+      background-image: url("../../../../../assets/images/return.svg");
+    }
+
+    .done {
+      background-image: url("../../../../../assets/images/correct.svg");
+    }
+  }
+
+  .wrap-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.agenda-item-done {
+  background-color: #f0ffcc;
+}
+
+:host {
+  margin: 10px 0px;
+  border: 1px solid #f0eef3;
+}
+
+:host:first-child {
+  margin: 0px;
+}

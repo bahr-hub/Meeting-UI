@@ -1,0 +1,218 @@
+.meeting-content
+{
+    display:flex;
+    overflow-y: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    .meeting-details,
+    .meeting-agenda
+    {
+        align-self: flex-start;
+        margin: 20px;
+        .long-input
+        {
+            flex: 1;
+        }
+        .form-holder
+        {
+            min-height: 535px;
+        }
+    }
+    .meeting-details
+    {
+        flex:0.6;
+
+        .calender-icon
+        {
+            background-image: url("../../../../../assets/images/sidemeu_cal.png");
+            background-repeat:no-repeat;
+            padding-left:20px;
+        }
+    }
+    .meeting-agenda
+    {
+        flex:0.4;
+
+        .agenda-holders
+        {
+            display: flex;
+            flex-direction: column;
+            
+            overflow-y: auto;
+            .agenda-item
+            {
+                margin: 10px 0px;
+                padding: 10px;
+                border: 1px solid #f0eef3;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .state-name
+                {
+                    display: flex;
+                    align-items: center;
+                    font-size: 18px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.33;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #2e1760;
+                    .state
+                    {
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        background-color: #a5eb00;
+                        margin: 0px 10px;
+                    }
+                    font-size: 16px;
+                }
+
+                .options-duration
+                {
+                    *
+                    {
+                        margin: 0px 20px;
+                    }
+                    .del-btn{
+               
+                        padding: 5px;
+                        background-image: url("../../../../../assets/images/delete.png");
+                        border:none;
+                        outline: none;
+                        width: 15.9px;
+                        height: 19.6px;
+                        background-repeat: no-repeat;
+                        background-color: transparent;
+                        background-size: contain;
+                        background-position: center;
+                    }
+                    .presenter-name
+                    {
+                        font-size: 11px;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.36;
+                        letter-spacing: normal;
+                      
+                        color: #646464;
+                    }
+                    .duration
+                    {
+                        font-size: 12px;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.33;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #979797;
+                    }
+                }
+
+            }
+            
+        }
+    }
+}
+.space-between
+{
+    justify-content: space-between;
+}
+.small-input
+{
+    flex:0.5;
+}
+.creation-row
+{
+    padding: 10px;
+    justify-content: flex-end;
+}
+.add-topic-btn
+{
+    padding: 5px 15px;
+    background-color: transparent;
+    border: 1px solid #7caa0f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img{
+        margin-inline-end: 10px;
+    }
+}
+.option
+{
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+    margin: 20px;
+    .save-btn
+    {
+        padding:10px 15px;
+        background-color: #39a4d0;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        img{
+            margin-inline-end: 5px;
+        }
+    }
+}
+.error
+{
+    color:red !important;
+}
+
+.form-group
+{
+    margin-top: 5px;
+    p{
+        color:#606060;
+        margin:0px;
+    }
+    input,select
+    {
+        box-shadow: 0 2px 0 0 #39a4d0;
+        border:none;
+        //border-width: 2px;
+        color:#606060;
+        align-self: flex-end;
+    }
+    .date
+    {
+        background-image: url("../../../../../assets/images/calendar.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-position-x: right;
+    }
+}
+
+.break
+{
+    flex-basis: 100%;
+    height: 0;
+    
+}
+
+p
+{
+    text-align: justify;
+}
+
+.flexed-out
+{
+    flex:1 !important;
+}

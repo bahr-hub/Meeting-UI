@@ -1,0 +1,33 @@
+<div class="todo-item widget">
+    <div class="meeting-details">
+        <div class="meeting-name">
+            <div class="plus-icon" (click)="toggleTasks()" >
+                <div class="rod rod1"></div>
+                <div class="rod rod2" [ngClass]="{'opened': opened}"></div>
+            </div>
+            <span class="name">
+                {{meeting.name}}
+            </span>
+        </div>
+        <div class="date-time">
+            <span class="date">{{'meeting.meeting_list.date' | translate }}: {{meeting.from | date:'dd MMM yyyy'}}</span>
+            <span class="date">|</span>
+            <span class="time">{{'meeting.meeting_list.time' | translate }}: {{meeting.from | date:'HH:MM a'}}</span>
+        </div>
+    </div>
+    <div class="tasks" *ngIf = "opened">
+        <div class="task-item" *ngFor="let task of meeting.meetingTask; let i = index;">
+            <div class="task-name">
+                <itz-checkbox [checked]="task.status" [disabled] = "task.status" (_checked)="closeTask(task)"></itz-checkbox>
+                <span class="name">
+                    {{task.name}}
+                </span>
+            </div>
+            <div class="due-date">
+                <span>
+                   <span style="color: #646464;">{{'meeting.meeting_list.due_date' | translate }}&nbsp;</span>{{task.dueDate | date:'dd/MM/yyyy'}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

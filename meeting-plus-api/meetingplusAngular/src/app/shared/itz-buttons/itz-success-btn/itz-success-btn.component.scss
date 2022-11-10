@@ -1,0 +1,28 @@
+.itz-success-button
+{
+    padding: 10px 20px;
+    margin-top: 10px;
+    color:#606060;
+    border: solid 1px #74a500;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    img {
+        margin-inline-end: 10px;
+    }
+}
+
+:host
+{
+    display: flex;
+    .endiv
+    {
+        justify-content: flex-end;
+    }
+    .ardiv
+    {
+        justify-content: flex-start;
+    }
+}

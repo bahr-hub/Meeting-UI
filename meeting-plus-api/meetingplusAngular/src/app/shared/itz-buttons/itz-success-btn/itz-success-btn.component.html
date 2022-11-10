@@ -1,0 +1,4 @@
+<button (click)="clicked.emit()" [ngClass] ="{'ardiv' : translate.currentLang === 'ar','endiv' : translate.currentLang !== 'ar', 'itz-success-button' : true}">
+   <img src="/../../../../assets//images/add_circle.png">
+   <ng-content></ng-content>
+</button>

@@ -1,0 +1,6 @@
+<div class="todo-list">
+    <itz-title>{{'meeting.meeting_list.todos' | translate}}</itz-title>
+    <div class="todos">
+        <app-todo-item *ngFor="let meeting of meetingTasks" [meeting]="meeting"></app-todo-item>
+    </div>
+</div>

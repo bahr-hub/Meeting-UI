@@ -1,0 +1,22 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add/Update</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form class="form-auth-small" #form="ngForm" (ngSubmit)="save(form)">
+        <div class="modal-body">
+            <div class="form-group" *ngFor="let property of properties">
+                <input id="{{property}}" [(ngModel)]="model[property]" name="{{property}}" type="text" required="required" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>{{property}}</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info">Save</button>
+            <button type="button" class="btn btn-default" (click)="modal.dismiss()">Cancel</button>
+        </div>
+    </form>
+</ng-template>

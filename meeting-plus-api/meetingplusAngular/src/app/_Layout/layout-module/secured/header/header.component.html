@@ -1,0 +1,53 @@
+<div class="user-actions">
+  <a class="logo" routerLink="/Meetings"></a>
+  <div class="actions">
+    <form class="search">
+      <div class="form__field">
+        <input type="search" id="searchText" name="searchText" [(ngModel)]="searchText" placeholder="{{'Search.Search_By_Meeting'|translate}}" class="form__input">
+        <input type="submit" value="{{'Search.Execute_Search' | translate}}" class="button" (click)="search()">
+      </div>
+    </form>
+<!-- 
+    <form id="content">
+      <input type="text" name="input" class="input" id="search-input" [(ngModel)]="searchText">
+      <button type="reset" class="search" id="search-btn"></button>
+    </form> -->
+
+    <div *ngIf="notificationList" class="option notification" (click)="toggleNotifications = !toggleNotifications">
+      <div class="notification-count">
+        {{notificationList.length}}
+      </div>
+
+      <div class="notifications-data widget" *ngIf="toggleNotifications">
+        <ul class="notifications-list" id="notification-data">
+          <li class="notfication-item" *ngFor="let notification of notificationList">
+            <span *ngIf="translate.currentLang == 'en' || translate.currentLang === undefined">
+              <a [routerLink]="['/Meetings/view',notification.meetingID]" routerLinkActive="router-link-active" class="name"> {{notification.message}}</a>
+            </span>
+            <span *ngIf="translate.currentLang == 'ar'">
+              <a [routerLink]="['/Meetings/view',notification.meetingID]" routerLinkActive="router-link-active" class="name"> {{notification.messageAR}}</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="translate.currentLang == 'ar'" class="option english" (click)="switchLang('en')"> </div>
+    <div class="option arabic" *ngIf="translate.currentLang == 'en' || translate.currentLang === undefined" (click)="switchLang('ar')"></div>
+
+    <div class="option user-account">
+      <div (click)="toggled = !toggled" class="current-user">
+        <img calass="avatar" src="../../../../../assets/images/avatar.svg">
+        <span>{{userName}}</span>
+        <img class="caret" src="../../../../../assets/images/down-arrow.svg">
+      </div>
+
+      <div *ngIf="toggled" class="profile-options widget" [ngStyle] = "{'text-align' : translate.currentLang === 'ar' ? 'right' : 'left' }">
+        <ul>
+          <li (click)="openUserProfilePage()" translate >header.profile</li>
+          <li  (click)="hideOptionsMenu()" *ngIf="ability.can('edit','setting')" [routerLink]="'/system-configurations'" translate>header.setting</li>
+          <li (click)="logout()" translate>header.logout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

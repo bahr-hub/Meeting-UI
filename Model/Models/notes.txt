@@ -1,0 +1,4 @@
+﻿Scaffold-DbContext "Name=SystemConnection" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force
+
+
+alter database [<dbname>] set enable_broker with rollback immediate;

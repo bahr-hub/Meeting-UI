@@ -1,0 +1,182 @@
+<div class="meeting-content">
+    <div class="meeting-details">
+        <itz-title>{{'meeting.create_meeting.meeting_details' | translate}}</itz-title>
+        <div class="form-holder widget">
+            <form *ngIf="meetingForm" [formGroup]="meetingForm" id="meetingForm" (ngSubmit)="saveMeeting()">
+                <div class="form-row">
+                    <div class="form-group long-input">
+                        <p [class.is-invalid-label]="formSubmited && meetingName.invalid">{{'meeting.create_meeting.meeting_title' | translate}}</p>
+                        <input [class.box-shadow-invalid]="formSubmited && meetingName.invalid" formControlName="name" type="text" required="required"
+                        />
+                        <p class="error" *ngIf="formSubmited && meetingName.invalid">
+                            <span *ngIf="meetingName.errors.required" translate>This field is required</span>
+                            <span *ngIf="meetingName.errors.maxlength" translate>This field must not exceed 50 characters</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row space-between">
+                    <div class="form-group small-input">
+                        <p [class.is-invalid-label]="formSubmited && from.invalid">{{'meeting.create_meeting.from' | translate}}</p>
+                        <input [class.box-shadow-invalid]="formSubmited && from.invalid" class="date" required formControlName="from" [owlDateTime]="dt2"
+                            [owlDateTimeTrigger]="dt2" [class.date-icon-left]="translate.currentLang=='ar'" [class.date-icon-right]="translate.currentLang == 'en' || translate.currentLang === undefined">
+                        <owl-date-time [pickerMode]="'popup'" #dt2>
+                        </owl-date-time>
+
+                        <p class="error" *ngIf="formSubmited && from.invalid">
+                            <span *ngIf="from.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+
+                    <div class="form-group small-input">
+                        <p [class.is-invalid-label]="formSubmited && to.invalid">{{'meeting.create_meeting.to' | translate}}</p>
+                        <input [class.box-shadow-invalid]="formSubmited && to.invalid" class="date" required formControlName="to" [owlDateTime]="dt3"
+                            [owlDateTimeTrigger]="dt3" [class.date-icon-left]="translate.currentLang=='ar'" [class.date-icon-right]="translate.currentLang == 'en' || translate.currentLang === undefined">
+                        <owl-date-time [pickerMode]="'popup'" #dt3>
+                        </owl-date-time>
+
+                        <p class="error" *ngIf="formSubmited && to.invalid">
+                            <span *ngIf="to.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group long-input">
+                        <p [class.is-invalid-label]="formSubmited && meetingParticipant.invalid" id="participants">{{'meeting.create_meeting.participants' | translate}}</p>
+                        <ng-select [class.box-shadow-invalid]="formSubmited && meetingParticipant.invalid" (remove)="validateUser($event)" [items]="participants"
+                            bindLabel="name" multiple="true" [closeOnSelect]="false" formControlName="meetingParticipant" notFoundText="{{'No Items Found'|translate}}">
+                        </ng-select>
+                        <p class="error" *ngIf="formSubmited && meetingParticipant.invalid">
+                            <span *ngIf="meetingParticipant.errors.required" translate>This field is required</span>
+                            <span *ngIf="meetingParticipant.errors.owner" translate>The owner of the meeting must be present</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-row space-between">
+                    <div class="form-group small-input">
+                        <p [class.is-invalid-label]="formSubmited && locationId.invalid">{{'meeting.create_meeting.location' | translate}}</p>
+                        <select [class.box-shadow-invalid]="formSubmited && locationId.invalid" formControlName="locationId" required="required">
+                          <option [selected]="!locationId.value" value="undefined">{{'meeting.create_meeting.choose_location' | translate}}</option>
+                            <option *ngFor="let location of locations" value="{{location.id}}">
+                                {{location.name}}
+                            </option>
+                        </select>
+
+                        <p class="error" *ngIf="formSubmited && locationId.invalid">
+                            <span *ngIf="locationId.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+                    <div class="form-group small-input">
+                        <p class="custom-lable">{{'meeting.create_meeting.tags' | translate}}</p>
+                        <ng-select [items]="tags" bindLabel="name" multiple="true" [closeOnSelect]="false" formControlName="meetingTag">
+                        </ng-select>
+                        <p class="error" *ngIf="formSubmited && meetingTag.invalid">
+                            <span *ngIf="meetingTag.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-row ">
+                    <div class="form-group small-input">
+                        <p [class.is-invalid-label]="formSubmited && projectId.invalid">{{'meeting.create_meeting.projects' | translate}}</p>
+                        <select [class.box-shadow-invalid]="formSubmited && projectId.invalid" formControlName="projectId" required="required">
+                            <option *ngFor="let project of projects" value="{{project.id}}">
+                                {{project.name}}
+                            </option>
+                        </select>
+
+                        <p class="error" *ngIf="formSubmited && projectId.invalid">
+                            <span *ngIf="projectId.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+
+                    <div class="form-group small-input">
+                        <p>{{'meeting.create_meeting.followup_pre_meetings' | translate}}</p>
+                        <select formControlName="previousMeetingID">
+                            <option *ngFor="let prevMeeting of prevMeetings" value="{{prevMeeting.id}}">
+                                {{prevMeeting.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="meeting-agenda">
+        <itz-title>{{'meeting.create_meeting.meeting_agenda' | translate}}</itz-title>
+        <div class="form-holder widget topics-form">
+            <form *ngIf="topicForm" [formGroup]="topicForm" (ngSubmit)="addTopic()">
+                <div class="form-row">
+                    <div class="form-group long-input">
+                        <p [class.is-invalid-label]="topicFormSubmited && topicName.invalid">{{'meeting.create_meeting.topic_title' | translate}}</p>
+                        <input [class.box-shadow-invalid]="topicFormSubmited && topicName.invalid" formControlName="name" type="text" required="required"
+                        />
+                        <p class="error" *ngIf="topicFormSubmited && topicName.invalid">
+                            <span *ngIf="topicName.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row space-between">
+                    <div class="form-group small-input">
+                        <p [class.is-invalid-label]="topicFormSubmited && presenterId.invalid">{{'meeting.create_meeting.presenter' | translate}}</p>
+                        <select [class.box-shadow-invalid]="topicFormSubmited && presenterId.invalid" (change)="setPresenterName($event.target.value)"
+                            formControlName="presenterId" required="required">
+                            <option value="" selected></option>
+                            <option *ngFor="let participant of meetingParticipant.value" [value]="participant.participantId">
+                                {{participant.name}}
+                            </option>
+                        </select>
+                        <p class="error" *ngIf="topicFormSubmited && presenterId.invalid">
+                            <span *ngIf="presenterId.errors.required" translate>This field is required</span>
+                        </p>
+                    </div>
+                    <div class="form-group small-input">
+                        <p [class.is-invalid-label]="topicFormSubmited && duration.invalid">{{'meeting.create_meeting.duration' | translate}}</p>
+                        <input [class.box-shadow-invalid]="topicFormSubmited && duration.invalid" type="number" min="1" formControlName="duration"
+                            required="required" />
+                        <p class="error" *ngIf="topicFormSubmited && duration.invalid">
+                            <span *ngIf="duration.errors.required" translate>This field is required</span>
+                            <span *ngIf="duration.errors.min" translate>validation.this_field_must_be_greater_than_zero</span>
+                            <span *ngIf="duration.errors.duration" translate>ErrorMsg.topicsDuration_greaterThan_meeting_Duration</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-row creation-row">
+                    <button class="add-topic-btn">
+                        <img src="../../../../../assets/images/add_circle.png"> {{'meeting.create_meeting.add_topic' | translate}}
+                    </button>
+                </div>
+                <div class="agenda-holders">
+
+                    <div *ngFor="let topic of topicsArray.controls; let i = index" class="agenda-item">
+                        <div class="state-name">
+                            <div class="state"></div>
+                            <span class="name">{{topic.value.name}}</span>
+                        </div>
+                        <div class="options-duration">
+                            <span class="presenter-name">{{topic.value.presenterName || topic.value.presenter.name }}</span>
+                            <span class="duration">{{topic.value.duration}} {{'meeting.create_meeting.minutes' | translate}}</span>
+                            <button (click)="removeTopic(i)" class="del-btn"></button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="break"></div>
+    <div class="option">
+        <button form="meetingForm" type="submit" class="save-btn">
+            <img src="../../../../../assets/images/save.svg">
+            <span>{{'meeting.create_meeting.save_meeting' | translate}}</span>
+        </button>
+    </div>
+</div>
+
+
+<app-confirmation-modal (confirmDeleteEmitter)="dropMeetingTopics($event)" (cancel)="cancelDroppingMeetingTopics($event)"></app-confirmation-modal>

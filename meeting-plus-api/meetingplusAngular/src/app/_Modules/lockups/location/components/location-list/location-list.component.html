@@ -1,0 +1,20 @@
+<!-- <div class="mainContent" style="padding: 20px;">
+    <itz-title> </itz-title>
+    
+    
+    
+
+</div>
+ -->
+
+<div class="main-content">
+    <div  class="lookup-header" >
+        <h4>{{'locations.locations' | translate}}</h4>
+        <itz-success-btn  *ngIf="ability.can('create','location')"(clicked)= "openModal()">{{'locations.add' | translate}}</itz-success-btn>
+    </div>
+    <app-data-list [properties]="properties" [list]="locationList" (deleteRow)="delete($event)" (editRow)="openModal($event)"
+    (changePagination)="onChangePagination($event)" [total]="total" [pageName]="'location'">
+    </app-data-list>
+    <app-location-form (saveRow)="save($event)"></app-location-form>
+</div>
+

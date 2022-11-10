@@ -1,0 +1,110 @@
+.add-action-btn
+{
+    align-self: flex-end;
+}
+
+:host
+{
+    display: flex;
+    flex-direction: column;
+}
+.form-holder
+{
+    background-color: #f3f3f3;
+    margin: 10px;
+    padding: 10px;
+    form
+    {
+        display: flex;
+        flex-wrap: wrap;
+        .options
+        {
+            display: flex;
+            .ardiv
+            {
+                justify-content: flex-start;
+            }
+            .endiv
+            {
+                justify-content: flex-end;
+            }
+            .save-participant
+            {
+                border: solid 1px #74a500;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.14;
+                letter-spacing: normal;
+                text-align: left;
+                color: #74a500;
+            }
+            .reset-participant
+            {
+                border: solid 1px #988f8f;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.14;
+                letter-spacing: normal;
+                text-align: left;
+                color: #606060;
+            }
+            .participant-form-btn
+            {
+                margin: 5px;
+                display:flex;
+                padding: 10px;  
+                background-color: white;
+                outline: none;
+                align-items: center;
+                img
+                {
+                    width:18px;
+                    margin-inline-end: 5px;
+                }
+            }
+        }
+    }
+}
+.long-input
+{
+    flex:1;
+    flex-basis: 100%;
+}
+.short-input
+{
+    flex:0.5;
+    margin: 10px;
+}
+.date
+{
+    background-image: url("../../../../../assets/images/calendar.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position-x: right;
+}
+.save-btn
+    {
+        padding:10px 15px;
+        margin-top: 5px;
+        height: 45px;
+        background-color: #39a4d0;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        img{
+            margin-inline-end: 5px;
+        }
+    }
+.arlabel{
+    display: flex;
+    position: initial;
+}
+

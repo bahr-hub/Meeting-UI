@@ -1,0 +1,10 @@
+<div class="main-content">
+    <div class="lookup-header">
+        <h4>{{'roles.roles' | translate}}</h4>
+        <itz-success-btn   *ngIf="ability.can('create','role')" (clicked)= "openModal()">{{'roles.add' | translate}}</itz-success-btn>
+    </div>
+    <app-data-list [properties]="properties" [list]="roleList" (deleteRow)="delete($event)" (editRow)="openModal($event)"
+    (changePagination)="onChangePagination($event)" [total]="total" [pageName]="'role'">
+    </app-data-list>
+    <app-role-form (saveRow)="save($event)"></app-role-form>
+</div>

@@ -1,0 +1,20 @@
+<div class="main-content">
+    <div class="lookup-header">
+        <h4 translate>meeting_list</h4>
+    </div>
+    <div class="meeting-card" *ngFor="let meeting of meetingLiteList">
+        <div class="meeting-details">
+            <div class="name-date botom-bordered">
+                <a [routerLink]="['/Meetings/view',meeting.id]" routerLinkActive="router-link-active" class="name">{{meeting.name}}</a> 
+                <span class="date">{{'meeting.meeting_list.date' | translate }}: {{meeting.from | date:'dd MMM yyyy'}} | {{'meeting.meeting_list.time'
+                    | translate }}: {{meeting.from | date:'shortTime'}} </span>
+
+                <button *ngIf="showDelete(meeting)" class="meeting-btn cancle-btn" (click)="openDialog(meeting.id)">
+                    <img src="../../../../../../assets/images/cancel.png">{{'meeting.create_meeting.delete' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-pagination [(total)]="total" [(recordPerPage)]="dataSource.pageSize" (changePagination)="onChangePagination($event)">
+</app-pagination>
+<app-confirmation-modal (confirmDeleteEmitter)="delete($event)"></app-confirmation-modal>

@@ -1,0 +1,10 @@
+
+<app-working-days (selectedDay)="onSelectDay($event)"></app-working-days>
+<div class="home-content">
+    <div class="meetings">
+        <app-meetings-list *ngIf="meetingList" [list]="meetingList"></app-meetings-list>
+    </div>
+    <div class="todos">
+        <app-todo-list *ngIf="meetingTasks" [meetingTasks]="meetingTasks"></app-todo-list>
+    </div>
+</div>

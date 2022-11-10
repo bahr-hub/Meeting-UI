@@ -1,0 +1,124 @@
+.aggenda-list
+{
+    display: flex;
+    flex-direction: column;
+}
+.add-agenda-item
+{
+    align-self: flex-end;
+    color:#7caa0f;
+
+    &:hover
+    {color: #fff;}
+}
+.add-agenda-item-form
+{
+    margin: 10px 0px;
+    padding: 5px;
+    border: 1px solid #f0eef3;
+    border-radius: 5px;
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .long-input
+        {
+            flex: 1;
+            flex-basis: 100%;
+
+        }
+        .short-input
+        {
+            flex: 0.5;
+            margin-left:5px;
+            margin-right: 5px;
+        }
+        .options
+        {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .form-options
+        {
+            display: flex;
+            flex: 1;
+            .ardiv
+            {
+                justify-content:flex-start;
+            }
+            .endiv
+            {
+                justify-content: flex-end;
+            }
+            .save-participant
+            {
+                border: solid 1px #74a500;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.14;
+                letter-spacing: normal;
+                text-align: left;
+                color: #74a500;
+            }
+            .reset-participant
+            {
+                border: solid 1px #988f8f;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.14;
+                letter-spacing: normal;
+                text-align: left;
+                color: #606060;
+            }
+            .participant-form-btn
+            {
+                margin: 5px;
+                display:flex;
+                padding: 10px;  
+                background-color: white;
+                outline: none;
+                align-items: center;
+                img
+                {
+                    width:18px;
+                    margin-inline-end: 5px;
+                }
+            }
+        }
+    }
+}
+
+.break
+{
+    flex-basis: 100%;
+    height: 0;
+    
+}
+.save-btn
+    {
+        padding:10px 15px;
+        margin-top: 5px;
+        height: 45px;
+        background-color: #39a4d0;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        img{
+            margin-inline-end: 5px;
+        }
+    }
+.arlabel
+{
+    position: initial;
+    display: flex;
+}

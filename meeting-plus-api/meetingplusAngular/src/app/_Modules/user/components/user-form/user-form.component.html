@@ -1,0 +1,231 @@
+<div class="mainContent component-content" mpRtl>
+    <h2 translate class="arlabel"> users.users</h2>
+    <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && save(userForm)" autocomplete="off">
+        <div style="display: none;">
+            <input type="text" id="PreventChromeAutocomplete" name="PreventChromeAutocomplete" autocomplete="username" />
+            <input type="password" id="PreventChromePasswordAutocomplete" name="PreventChromePasswordAutocomplete" autocomplete="password"
+            />
+        </div>
+
+        <div class="row no-gutters">
+            <div class="col-lg-3">
+                <div class="text-center">
+                    <file-uploader (imageBase64Emitter)="onImageChange($event)" [imageSrc]="imageUrl" [activeColor]="'orangered'" [baseColor]="'lightgray'"></file-uploader>
+                </div>
+            </div>
+            <div class="col-lg-9 inputs-group">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userForm.submitted && name.invalid" translate class="arlabel lbl">users.enName</label>
+                        <input [class.is-invalid]="userForm.submitted && name.invalid" id="name" [(ngModel)]="userModel.name" #name="ngModel" name="name"
+                               type="text" required="required" pattern="[^' ']+" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="invalid-feedback" *ngIf="userForm.submitted && name.invalid">
+                          <p *ngIf="name.errors.required" translate>This field is required</p>
+                          <p *ngIf="name.errors.pattern" translate>This field should not contain space</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userForm.submitted && firstName.invalid" translate class="arlabel lbl">users.firstName</label>
+                        <input [class.is-invalid]="userForm.submitted && firstName.invalid" id="firstName" name="firstName" [(ngModel)]="userModel.fkUserProfile.firstName"
+                               #firstName="ngModel" type="text" required="required" pattern="[^' ']+" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="invalid-feedback" *ngIf="userForm.submitted && firstName.invalid">
+                          <p *ngIf="firstName.errors.required" translate>This field is required</p>
+                          <p *ngIf="firstName.errors.pattern" translate>This field should not contain space</p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userForm.submitted && lastName.invalid" translate class="arlabel lbl">users.lastName</label>
+                        <input [class.is-invalid]="userForm.submitted && lastName.invalid" id="lastName" name="lastName" [(ngModel)]="userModel.fkUserProfile.lastName"
+                               #lastName="ngModel" type="text" required="required" pattern="[^' ']+" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="invalid-feedback" *ngIf="userForm.submitted && lastName.invalid">
+                          <p *ngIf="lastName.errors.required" translate>This field is required</p>
+                          <p *ngIf="lastName.errors.pattern" translate>This field should not contain space</p>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userForm.submitted && mobile.invalid" translate class="arlabel lbl">users.phone</label>
+                        <input [class.is-invalid]="userForm.submitted && mobile.invalid" id="mobile" name="mobile" [(ngModel)]="userModel.mobile"
+                               #mobile="ngModel" type="text" required="required" (keypress)="numberOnly($event)" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="invalid-feedback" *ngIf="userForm.submitted && mobile.invalid">
+                          <p *ngIf="mobile.errors.required" translate>This field is required</p>
+                          <p *ngIf="mobile.errors.pattern" translate>Mobile number is not invalid </p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userForm.submitted && email.invalid" [class.disabled-email]="isFromHeader" translate class="arlabel lbl">users.email</label>
+                        <input [disabled]="isFromHeader" [class.is-invalid]="userForm.submitted && email.invalid" id="email" name="email" [(ngModel)]="userModel.email" #email="ngModel"
+                               type="email" required="required" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <div class="invalid-feedback" *ngIf="userForm.submitted && email.invalid">
+                          <p *ngIf="email.errors.required" translate>This field is required</p>
+                          <p *ngIf="email.errors.pattern" translate>Email is invalid</p>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group long-input">
+                            <p [class.is-invalid-label]="userForm.submitted && countryCode.invalid" translate class="arlabel">users.country</p>
+                            <select class="user-select" [(ngModel)]="userModel.fkUserProfile.countryCode" id="countryCode" name="countryCode" #countryCode="ngModel" required="required"
+                                (ngModelChange)="onCountryChange($event)" [class.is-invalid]="userForm.submitted && countryCode.invalid">
+                                <option value="null">Choose Country</option>
+                                <option *ngFor="let country of countries" value="{{country.alpha3Code}}">
+                                    {{country.name}}
+                                </option>
+                            </select>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <p class="error" *ngIf="userForm.submitted && countryCode.invalid">
+                                <span *ngIf="countryCode.errors.required" translate>This field is required</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group long-input">
+                            <p [class.is-invalid-label]="userForm.submitted && role.invalid" translate class="arlabel">users.assignedRole</p>
+                            <select class="user-select" [disabled]="isFromHeader" required="required" [class.is-invalid]="userForm.submitted && role.invalid" [(ngModel)]="selectedRole" [ngModelOptions]="{standalone: true}"
+                                id="role" name="role" #role="ngModel">
+                                <option [disabled]="isFromHeader" value="null" *ngIf="!userModel.id" [class.is-invalid-label]="userForm.submitted && role.invalid">{{'users.choose_role'| translate}}</option>
+                                <option [disabled]="isFromHeader" *ngFor="let role of rolesList" value="{{role.id}}">
+                                    {{role.name}}
+                                </option>
+                            </select>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <p class="error" *ngIf="userForm.submitted && role.invalid">
+                                <span *ngIf="role.errors.required" translate>This field is required</span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row"><div class="col-lg-6">
+                    <div class="form-group long-input">
+                    <p class="arlabel">{{'meeting.create_meeting.location' | translate}}</p>
+                    <select [(ngModel)]="selectedLocation" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let location of locations" value="{{location.id}}">
+                            {{location.name}}
+                        </option>
+                    </select>
+                    </div>
+                    </div>
+                </div>
+                <h3 translate class="arlabel lbl">users.changePassword</h3>
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userForm.submitted && password.invalid" translate class="arlabel">users.password</label>
+                        <input [class.is-invalid]="userForm.submitted && password.invalid" id="password" name="password" [(ngModel)]="userModel.password"
+                               #password="ngModel" type="password" autocomplete="new-password" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label [class.is-invalid-label]="userModel.password !=userModel.confirmPassword" translate class="arlabel">users.confirmPassword</label>
+                        <input [class.is-invalid]="userModel.password !=userModel.confirmPassword" id="confirmPassword" name="confirmPassword" [(ngModel)]="userModel.confirmPassword"
+                               #confirmPassword="ngModel" type="password" validateEqual="password" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+
+                        <p class="error" *ngIf="userModel.password !=userModel.confirmPassword">
+                          <span translate>Password mismatch</span>
+                        </p>
+
+                      </div>
+                    </div>
+                </div>
+                <h3 translate class="arlabel lbl">users.userConfig</h3>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label translate class="arlabel">users.reminderBeforeMeeting</label>
+                        <input id="reminderBeforeMeeting" [(ngModel)]="userModel.fkUserConfiguration.reminderBeforeMeeting" name="reminderBeforeMeeting"
+                               type="number" #reminderBeforeMeeting="ngModel" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group long-input">
+                            <p translate class="arlabel lbl">setting.timezone</p>
+                            <select class="user-select" [(ngModel)]="userModel.fkUserConfiguration.timeZone" id="timeZone" name="timeZone" #timeZone="ngModel">
+                                <option *ngFor="let timeZone of timeZones" value="{{timeZone}}">
+                                    {{timeZone}}
+                                </option>
+                            </select>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="d-flex field-group">
+                            <div class="inputs-group col-lg-6 col-md-12 col-sm-12">
+                                <div class="switch">
+                                    <div class="w-100 custom-control custom-switch">
+                                        <input [(ngModel)]="userModel.fkUserConfiguration.integrationWithGoogleCalendar" type="checkbox" class="custom-control-input"
+                                            id="customSwitch1" name="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-11">
+                        <div class="row mt-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="googleCalendar">
+                                    <img src="./assets/images/GoogleCalendar.svg" alt="">
+                                    <h3>Integrate With Google Calendar</h3>
+                                    <p>You need to give access to MeetingPlus to make Google Calenar appears here.</p>
+                                    <a href="javascript:void(0);" (click)="this.GiveAccess()"  class="button main">Give Access</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-container text-right tablet-margin">
+            <button type="submit " class="btn btn-primary save-button">{{'users.save' | translate}}</button>
+            <!-- <button type="button " class="btn btn-warning " [routerLink]="'/users'">{{'Cancel' | uppercase}}</button> -->
+        </div>
+
+
+    </form>
+
+
+</div>

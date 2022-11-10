@@ -1,0 +1,96 @@
+<!-- <div class="data-list-container">
+    <div class="row mt-3">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let property of properties">
+                            <span>{{property | translate}}</span>
+                        </th>
+                        <th translate>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th *ngFor="let property of properties">
+                            <input id="{{property}}" [(ngModel)]="model[property]" name="{{property}}" type="text" (ngModelChange)="applyFilter()" />
+                        </th>
+                    </tr>
+                    <tr *ngFor="let item of list">
+    
+    
+                        <td *ngFor="let property of properties" data-colmun="property">
+                            {{item[property]}}
+                        </td>
+                        <td>
+                            <button (click)="edit(item.id)" class="btn btn-success" translate>
+                                Edit
+                            </button>
+                            <button (click)="showConfirmDialog(item.id)" class="btn btn-danger" translate>
+                                Delete
+                            </button>
+                        </td>
+    
+                        <td>
+                            <div class="iconBtnsWrapper">
+                                <a (click)="edit(item.id)" class="button outline edit">
+                                    <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"></span>
+                                </a>
+                                <a (click)="showConfirmDialog(item.id)"  class="button outline delete">
+                                    <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"></span>
+                                </a>
+                            </div>
+                        </td>
+    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <app-pagination [(total)]="total" [(recordPerPage)]="dataSource.pageSize" (changePagination)="onChangePagination($event)">
+    </app-pagination>
+    
+    <app-confirmation-modal (confirmDeleteEmitter)="delete($event)"></app-confirmation-modal>
+</div>
+ -->
+<table class="data-table">
+    <thead>
+        <tr>
+            <th *ngFor="let property of properties">
+                <span>{{property | translate}}</span>
+            </th>
+            <th rowspan="2" class="options"><span>Edit/Delete</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr> 
+            <td *ngFor="let property of properties" class="input-holder">
+                <input class="search-input" id="{{property}}" [(ngModel)]="model[property]" name="{{property}}" type="text" (ngModelChange)="applyFilter()" />
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr *ngFor="let item of list">
+    
+    
+            <td *ngFor="let property of properties" data-colmun="property" translate>
+                {{item[property]}}
+            </td>
+            <td class="options-td">
+                <button *ngIf="ability.can('edit',pageName)" data-toggle="tooltip" title="edit" (click)="edit(item.id)" class="icon edit" translate></button>
+                <button *ngIf="ability.can('delete', pageName)" data-toggle="tooltip" title="delete" (click)="showConfirmDialog(item.id)" class="icon delete" translate></button> 
+                 <button *ngIf="pageName=='user' && item.isActive && ability.can('activiation', pageName)" data-toggle="tooltip" title="Deactivate" (click)="change_Status(item.id,item.isActive)" class="icon deactivate" translate></button> 
+                <button *ngIf="pageName=='user' && !item.isActive && ability.can('activiation', pageName)" data-toggle="tooltip" title="Activate" (click)="change_Status(item.id,item.isActive)" class="icon activate" translate></button> 
+             
+            </td>
+
+
+        </tr>
+    </tbody>
+</table>
+
+<app-pagination [(total)]="total" [(recordPerPage)]="dataSource.pageSize" (changePagination)="onChangePagination($event)">
+</app-pagination>
+
+<app-confirmation-modal (confirmDeleteEmitter)="delete($event)"></app-confirmation-modal>

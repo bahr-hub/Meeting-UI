@@ -1,0 +1,62 @@
+@import"../styles/colors";
+.itz-btn
+{
+    padding: 10px 15px;
+    color:$white;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    background-color: $btn-bgcolor;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.btn-full
+{
+    width: 100%;
+}
+.accept-btn
+{
+    border: 1px solid #7caa0f;
+
+}
+.operation-btn
+{
+    border: 1px solid $flat-orange;
+
+}
+.delete-btn
+{
+    border: 1px solid $flat-red;
+
+}
+.meeting-card-btn
+{
+    background: $white;
+    color: $grey-font;
+}
+.buttonsWrapper{
+    margin: 1%;
+    margin-bottom: -42px;
+}
+
+.buttonsWrapper .btn-info
+{
+    background-color: #2dabe2;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn-success{
+    background-color: rgb(63, 221, 0);
+}
+
+.btn-danger{
+   
+    background-color: rgb(247, 7, 7);
+}
+.btn-cancle
+{
+    border: 1px solid #2E1760;
+    color:#2E1760
+}

@@ -1,0 +1,96 @@
+.meeting-head-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .meeting-details
+    {
+        display: flex;
+        align-items: center;
+        .meeting-date
+        {
+            margin-inline-start: 30px;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: left;
+            color: #646464;
+        }
+        .date-time
+        {
+            .date,.time
+            {
+                font-family: "NeoSansArabic";
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.36;
+                letter-spacing: normal;
+                text-align: left;
+                color: #646464;
+                margin-inline-end: 10px;
+            }
+        }
+    }
+}
+.options-timer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+    .meeting-options
+    {
+        margin-right: 10px;
+        .meeting-option-btn
+        {
+            background-color: transparent;
+            border:none;
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-origin: content-box;
+            padding: 0px;
+        }
+        .end
+        {
+            background-image: url("../../../../../assets/images/pause.png");
+        }
+        .accept
+        {
+            background-image: url("../../../../../assets/images/accept.png");
+        }
+        .decline
+        {
+            background-image: url("../../../../../assets/images/decline.png");
+        }
+        .edit
+        {
+            background-image: url("../../../../../assets/images/edit.png");
+        }
+        .fullscreen
+        {
+            background-image: url("../../../../../assets/images/fullscreen.png");
+        }
+        .start
+        {
+            background-image: url("../../../../../assets/images/play.png");
+        }
+        .delete
+        {
+            background-image: url("../../../../../assets/images/delete.png");
+        }
+        .link
+        {
+            background-image: url("../../../../../assets/images/link.png");
+        }
+    }
+}

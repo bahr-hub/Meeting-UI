@@ -1,0 +1,10 @@
+<div class="burger-btn" (click)="expand()" [ngClass]="{'expaneded-burger': isExpanded}">
+    <div class="rod rod1"></div>
+    <div class="rod rod2"></div>
+    <div class="rod rod3"></div>
+</div>
+
+<app-side-bar-item [closed]="!isExpanded" *ngFor="let link of Links" Link="{{link.url}}">
+    <img *ngIf="ability.can(link.action, link.mod)" class="side-bar-item-img small" [src]="link.img">
+    <span *ngIf="ability.can(link.action, link.mod) && isExpanded" style="margin: 0px 10px;" translate>{{link.name}}</span>
+</app-side-bar-item>

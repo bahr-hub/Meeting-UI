@@ -1,0 +1,11 @@
+<div class="participant">
+
+  <img *ngIf=!_participant.participant.imageUrl class="user-img" src="../../../../../assets/images/user.svg">  
+  <img *ngIf=_participant.participant.imageUrl class="user-img" src={{image}}>
+  <div class="name-profission">
+    <span class="name"> {{_participant.participant.name}}<span *ngIf="isCreator"
+        class="organizer">(Organizer)</span></span>
+    <span class="profission">{{_participant.participant.email}}</span>
+    <span class="state" *ngIf=_participant.joinedMeeting >(online)</span>
+  </div>
+</div>

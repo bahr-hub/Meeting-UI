@@ -1,0 +1,107 @@
+<div class="meeting-holder" *ngIf="meetingForm">
+  <div class="header">
+    <h3 class="title">Meeting details</h3>
+    <span class="dividor"></span>
+  </div>
+  <form [formGroup]="meetingForm" (ngSubmit)="createMeeting()">
+    <div class="form-holder">
+      <div class="form-row">
+        <div class="form-group input-item">
+          <input formControlName="name" autofocus type="text" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Name</label>
+        </div>
+
+        <div class="form-group input-item">
+          <input formControlName="from" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2">
+          <owl-date-time pickerMode="popup" #dt2></owl-date-time>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>from</label>
+        </div>
+
+        <div class="form-group input-item">
+          <input formControlName="to" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1">
+          <owl-date-time pickerMode="popup" #dt1></owl-date-time>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>to</label>
+        </div>
+
+
+        <div class="input-item">
+          <ng-select [items]="meetingProjects" bindLabel="name" bindValue="id"
+            placeholder="Select Meeting Project " appendTo="body" [closeOnSelect]="true" formControlName="projectId">
+          </ng-select>
+        </div>
+
+
+        <div class="input-item">
+          <ng-select [items]="meetingLocations" bindLabel="name" bindValue="id"
+            placeholder="Select Meeting Location" appendTo="body" [closeOnSelect]="true" formControlName="locationId">
+          </ng-select>
+        </div>
+
+        <div class="form-group input-item">
+          <ng-select [items]="meetingTags" bindLabel="name"  placeholder="Select Meeting tags"
+            appendTo="body" multiple="true" [closeOnSelect]="false" formControlName="meetingTag">
+          </ng-select>
+        </div>
+
+
+        <div class="form-group input-item">
+          <ng-select [items]="availableParticipants" bindLabel="name"  placeholder="Select participants"
+            appendTo="body" multiple="true" [closeOnSelect]="false" formControlName="meetingParticipant">
+          </ng-select> 
+        </div>
+
+        <div class="form-group input-item">
+          <label>meeting-follow</label>
+          <ng-select [items]="availableParticipants" bindLabel="name" bindValue="id" placeholder="Meeting Follow up"
+            appendTo="body" [closeOnSelect]="true" formControlName="followUpMeeting">
+          </ng-select>
+        </div>
+      </div>
+    </div>
+    <div class="header">
+      <h3 class="title">Meeting Topics</h3>
+      <span class="dividor"></span>
+    </div>
+    <div class="form-holder" formArrayName='meetingTopic'>
+      <div class="form-row" *ngFor="let topic of topicsArray.controls; let i = index" [formGroupName]="i">
+        <div class="form-group input-topic-item">
+          <input formControlName="name" autofocus type="text" required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Topic Name</label>
+        </div>
+
+        <div class="input-topic-item">
+          <ng-select (change)= "setPresenterName(topic)" [items]="meetingForm.get('meetingParticipant').value" bindLabel="name" bindValue="participantId"
+            placeholder="Select Presenter" appendTo="body" [closeOnSelect]="true" formControlName="presenterId">
+          </ng-select>
+        </div>
+
+        <div class="form-group input-topic-item">
+          <input type="number" formControlName="duration" autofocus required="required" />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Duration in minutes </label>
+        </div>
+        <div>
+          <button  (click)="removeTopic(i)" class="delete-topic">
+
+          </button>
+        </div>
+      </div>
+
+      <button (click)="createTopicItem()" class="btn btn-primary submit-btn add-topic-btn">
+        add topic
+      </button>
+    </div>
+    <button type="submit" class="btn btn-primary submit-btn">
+      Create meeting
+    </button>
+  </form>
+</div>

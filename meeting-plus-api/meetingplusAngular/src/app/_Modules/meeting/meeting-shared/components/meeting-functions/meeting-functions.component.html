@@ -1,0 +1,37 @@
+<div class="interactions">
+    <div class="before-participating">
+        <button *ngIf="(meetingType == 0 ) && !isMeetingCreator(meeting) && meeting.startedAt && !isJoined(meeting)" data-toggle="tooltip"
+            title="{{'meeting.create_meeting.join' | translate}}" class="meeting-btn meeting-icon join" (click)="join(meeting.id)"></button>
+        <button *ngIf="isViewPage" class="meeting-btn meeting-icon fullscreen apply-size" (click)="fullscreen()" data-toggle="tooltip"
+            title="{{'meeting.create_meeting.fullscreen' | translate}}" style="border-color: lightskyblue;"></button>
+        <button *ngIf="meetingType == 0 || meetingType == 1" class="meeting-btn meeting-icon link apply-size" data-toggle="tooltip" title="{{'meeting.create_meeting.copy_link' | translate}}"
+            (click)="externalLink(meeting.id)" style="border-color: black;"></button>
+        <button *ngIf="meetingType == 0 && !meeting.started && isMeetingCreator(meeting)" class="meeting-btn accept-btn" (click)="start(meeting.id)">
+            <img src="../../../../../../assets/images/play.png">{{'meeting.create_meeting.start' | translate}}</button>
+        <button *ngIf="meetingType == 0 && meeting.started && isMeetingCreator(meeting)" class="meeting-btn edit-btn" (click)="end(meeting.id)">
+            <img src="../../../../../../assets/images/pause.png"> {{'meeting.create_meeting.end' | translate}}
+        </button>
+        <button *ngIf="meetingType == 1 && isMeetingCreator(meeting)" class="meeting-btn edit-btn" (click)="edit(meeting.id)">
+            <img src="../../../../../../assets/images/edit.png">{{'meeting.create_meeting.edit' | translate}} </button>
+        <button *ngIf="( (meetingType == 0 && !meeting.started) || (meetingType == 1) ||(meetingType == 2 && !meeting.started ) ) && isMeetingCreator(meeting)"
+            class="meeting-btn cancle-btn" (click)="openDialog(meeting.id)">
+            <img src="../../../../../../assets/images/cancel.png">{{'meeting.create_meeting.delete' | translate}}</button>
+        <div style="position: relative;" *ngIf="meetingType == 1 && !isMeetingCreator(meeting) && meeting">
+            <button class="meeting-btn edit-btn" (click)="postpone(meeting.id)">
+                <img src="../../../../../../assets/images/postpone.png">{{'meeting.create_meeting.propose' | translate}}
+            </button>
+            <app-purpose-time *ngIf="openPerposal" [meeting]='meeting'></app-purpose-time>
+        </div>
+        <button *ngIf="meetingType == 1 && !isMeetingCreator(meeting) &&( (isAcceptMeeting(meeting) || isAcceptMeeting(meeting) == null))"
+            class="meeting-btn cancle-btn" (click)="decline(meeting.id)">
+            <img src="../../../../../../assets/images/decline.png">{{'meeting.create_meeting.decline' | translate}}</button>
+        <button *ngIf="meetingType == 1 && !isMeetingCreator(meeting)  && !isAcceptMeeting(meeting)" class="meeting-btn accept-btn"
+            (click)="accept(meeting.id)">
+            <img src="../../../../../../assets/images/accept.png">{{'meeting.create_meeting.accept' | translate}}</button>
+        <button *ngIf="meeting.previousMeetingID!='00000000-0000-0000-0000-000000000000'" (click)="gotToPreviousMeeting(meeting.previousMeetingID)" class="meeting-btn" style="border-color: green;">
+            <img src="../../../../../../assets/images/previous.jpg"></button>
+    </div>
+</div>
+
+<app-confirmation-modal (confirmDeleteEmitter)="delete($event)"></app-confirmation-modal>
+<app-external-link></app-external-link>

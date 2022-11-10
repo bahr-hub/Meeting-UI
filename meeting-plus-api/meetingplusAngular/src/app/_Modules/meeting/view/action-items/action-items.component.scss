@@ -1,0 +1,66 @@
+.action-item
+{
+
+    display: flex;
+    margin: 10px;
+    border: 1px solid#f0eef3;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "NeoSansArabic";
+    .action-name
+    {
+        display: flex;
+        align-items: center;
+        color: #2e1760;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.31;
+        letter-spacing: normal;
+        color: #2e1760;
+        itz-checkbox
+        {
+            margin-inline-end: 10px;
+        }
+    }
+}
+.date
+{
+    justify-content: space-between;
+    font-size: 12px;
+    .due
+    {
+        margin: 5px;
+        font-size: 11px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.36;
+        letter-spacing: normal;
+        color: #646464;
+    }
+    .day
+    {
+        margin: 5px;
+        color:#a49d9d;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #979797;
+    }
+}
+.assigne
+{
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    color: #74a500;
+}

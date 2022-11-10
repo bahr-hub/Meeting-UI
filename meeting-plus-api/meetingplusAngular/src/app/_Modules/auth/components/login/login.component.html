@@ -1,0 +1,40 @@
+<div class="login-container" [ngClass]="{'form-submitted': submited}">
+    <div *ngIf="!submited">
+        <img class="logo-img" src="../../../../assets/images/header-logo.png">
+        <span *ngIf="isInValidCredential" class="err-message">Invalid Email of Password</span>
+        <form [formGroup]="LoginForm" (submit)="login()" *ngIf="LoginForm">
+            <div class="form-group">
+                <input formControlName="email" autofocus type="text" required="required" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Email</label>
+            </div>
+
+            <div class="form-group">
+                <input formControlName="password" type="password" required="required" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Password</label>
+            </div>
+            <button class="itz-btn btn-full" type="submit">Login</button>
+
+        </form>
+    </div>
+    <div class="lds-ring" *ngIf="submited && (!loginSuccess && !loginFalied)">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div *ngIf="submited && loginSuccess">
+        <img style="width: 100%;" src="../../../../../assets/images/check.svg">
+    </div>
+
+    <div *ngIf="submited && loginFalied">
+        <img style="width: 100%;" src="../../../../../assets/images/wrong.svg">
+    </div>
+</div>
+<!--<div class="copy-right">
+    Copyright ©
+    <a href="https://itzoneglobal.com/"> ITZone 2020</a> . All rights reserved.
+</div>-->

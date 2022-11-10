@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12 col-md-5">
+    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">{{'Common.Showing'|translate}} {{pagination.from}} - {{pagination.to}} {{'Common.Of'|translate}} {{pagination.total}}
+      {{'Common.Entries'|translate}}
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-7">
+    <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate" style="float:right">
+      <ul class="pagination">
+        <li class="paginate_button page-item previous" id="DataTables_Table_0_previous">
+          <button [disabled]="this.pagination.from == 1" [ngStyle]="{cursor: this.pagination.from == 1 ? 'not-allowed' : 'pointer'}"
+            (click)="change('min',1);" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">{{'Common.Previous'|translate}}</button>
+        </li>
+        <li class="paginate_button page-item active">
+          <a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">{{pagination.currentPage}}</a>
+        </li>
+        <li class="paginate_button page-item next" id="DataTables_Table_0_next">
+          <button [ngStyle]="{cursor: this.pagination.to == this.total ? 'not-allowed' : 'pointer' }" [disabled]="this.pagination.to == this.total"
+            (click)="change('plus',pagination.lastPage);" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">{{'Common.Next'|translate}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

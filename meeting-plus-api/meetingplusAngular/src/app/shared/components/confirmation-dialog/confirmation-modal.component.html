@@ -1,0 +1,15 @@
+<ng-template #content let-modal id="confirm-modal" >
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" translate>Delete</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" translate>
+        {{message}}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()" translate>Yes</button>
+        <button type="button" class="btn btn-default" (click)="close()" translate>No</button>
+    </div>
+</ng-template>

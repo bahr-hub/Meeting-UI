@@ -1,0 +1,16 @@
+<div class="meeting-list" *ngFor="let item of meetingList;">
+    <itz-title >{{getMeetingTypeName(item.type) |translate}}</itz-title>
+    <div class="meetings">
+        <app-meeting-card *ngFor="let meeting of item.meetings" [meeting]="meeting" [meetingType]="item.type">
+            <div class="timer" *ngIf="item.type == 1">
+                <app-timer (zeroTrigger)="onZeroTrigger($event,meeting)" [End]="meeting.from"></app-timer>
+            </div>
+           
+        </app-meeting-card>
+    </div>
+</div>
+<div class="create-meeting-container">
+    <button  *ngIf="ability.can('create','meeting')"   [routerLink]="['/Meetings/create']" class="create-meeting-btn">
+        <img src="../../../../../../assets/images/create.svg"><span style="margin-right: 6px;margin-left: 6px;"></span><span translate>meeting.create_meeting.create_meeting</span>
+    </button>
+</div>
